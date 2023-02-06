@@ -1,8 +1,6 @@
 #   Jasmine Bumbray
 #   CIS261
 #   Project Phase 2
-
-
 def GetEmpName():
     empname = input("Enter employee name (END to terminate): ")
     return empname
@@ -13,6 +11,7 @@ def GetDatesWorked():
     fromdate = input("Enter the 'from' date (mm/dd/yyyy): ")
     todate = input("Enter the 'to' date (mm/dd/yyyy): ")
     return fromdate, todate
+
 
 
 def GetHoursWorked():
@@ -49,8 +48,6 @@ def printinfo(EmpDetailList):
         hourlyrate = EmpList[4]
         taxrate = EmpList[5]
 
-
-
         grosspay, incometax, netpay = CalcTaxAndNetPay(hours, hourlyrate, taxrate)
         print(fromdate, todate, empname, f"{hours:,.2f}",  f"{hourlyrate:,.2f}", f"{grosspay:,.2f}",  f"{taxrate:,.1%}",  f"{incometax:,.2f}",  f"{netpay:,.2f}")
         TotEmployees += 1
@@ -61,6 +58,7 @@ def printinfo(EmpDetailList):
         # the following line of code assigns TotEmployees totals to dictionary 
         EmpTotals["TotEmp"] = TotEmployees
         # write code to assign TotHours, TotGrossPay, TotTax, and TotNetPay to corresponding dictionary item
+        EmpTotals["TotEmp"] = TotEmployees
         EmpTotals["TotHours"] = TotHours
         EmpTotals["TotGrossPay"] = TotGrossPay
         EmpTotals["TotTax"] = TotTax
@@ -77,13 +75,6 @@ def printinfo(EmpDetailList):
 #    print(f"Total Gross Pay: {TotGrossPay:,.2f}")
 #    print(f"Total Income Tax:  {TotTax:,.2f}")
 #    print(f"Total Net Pay: {TotNetPay:,.2f}")
-def PrintTotals(TotEmployees, TotHours, TotGrossPay, TotTax, TotNetPay):
-    print()
-    print(f"Total Number Of Employees: {TotEmployees}")
-    print(f"Total Hours Worked: {TotHours:,.2f}")
-    print(f"Total Gross Pay: {TotGrossPay:,.2f}")
-    print(f"Total Income Tax:  {TotTax:,.2f}")
-    print(f"Total Net Pay: {TotNetPay:,.2f}")
 
 def PrintTotals(EmpTotals):    
     print()
@@ -91,10 +82,18 @@ def PrintTotals(EmpTotals):
     # the following line of code prints Total Employees from the dictionary
     print(f'Total Number Of Employees: {EmpTotals["TotEmp"]}')
     # write code to print TotalHrs, TotGrossPay, TotTax and TotNetPay from dictionary
+    print(f'Total Hours: {EmpTotals["TotHours"]}')
+    print(f'Total Gross Pay: {EmpTotals["TotGrossPay"]}')
+    print(f'Total Tax: {EmpTotals["TotTax"]}')
+    print(f'Total NetPay: {EmpTotals["TotNetPay"]}')
+
+ 
 
 
 
-if __name__ == "__main__":
+
+
+    if __name__ == "__main__":
     # COMMENT OUT THE FOLLOWING CODE
     # #TotEmployees = 0
     #TotHours = 0.00
@@ -118,7 +117,7 @@ if __name__ == "__main__":
         #printinfo(empname, hours, hourlyrate, grosspay, taxrate, incometax, netpay)
 
         #write code to insert fromdate, todate, empname, hours, hourlyrate, and taxrate into list EmpDetail
-
+        EmpDetail = [fromdate, todate, empname, hours, hourlyrate, taxrate]
 
         #the following code appends the list EmpDetail to the list EmpDetailList
         EmpDetailList.append(EmpDetail)
@@ -131,7 +130,6 @@ if __name__ == "__main__":
         #TotNetPay += netpay
     printinfo(EmpDetailList)
     PrintTotals (EmpTotals)
-
 
 
 
